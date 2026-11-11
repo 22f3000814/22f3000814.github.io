@@ -32,18 +32,6 @@
             --code-block-text: #F5F3FF;
         }
 
-        [data-theme="slate-teal"] {
-            /* Slate + Teal */
-            --bg-color: #F1F5F9;
-            --primary-color: #1E293B;
-            --accent-color: #0F766E;
-            --secondary-color: #CCFBF1;
-            --card-bg: #ffffff;
-            --table-stripe: rgba(204, 251, 241, 0.3);
-            --code-block-bg: #1E293B;
-            --code-block-text: #F1F5F9;
-        }
-
         body {
             font-family: 'Inter', system-ui, sans-serif;
             background-color: var(--bg-color);
@@ -191,9 +179,8 @@
 
     <div class="top-bar">
         <select id="theme-selector">
-            <option value="default">Cream & Forest Green (Default)</option>
-            <option value="dark-purple">Pure Dark & Purple</option>
-            <option value="slate-teal">Slate & Teal</option>
+            <option value="default">Default</option>
+            <option value="dark-purple">Dark</option>
         </select>
     </div>
 
@@ -336,6 +323,13 @@
                 </tr>
             </tbody>
         </table>
+    </div>
+
+    <h2>Algorithms & Problem Solving</h2>
+    
+    <div class="note-card">
+        <span class="term">Algorithm</span>
+        <p class="def">A finite number of precise and concise unambiguous instructions, to solve a given problem, which can be executed in a finite time on a computer to obtain the envisaged solution.</p>
     </div>
 
     <!-- JavaScript to handle the theme switching -->
