@@ -247,26 +247,49 @@
             </tbody>
         </table>
     </div>
-
 <div class="note-card">
-        <span class="term">Common scanf() Errors</span>
-        <ul style="margin-top: 0.5rem; padding-left: 1.5rem;">
-            <li class="def" style="margin-bottom: 0.75rem;">
-                <strong>Using <code>%f</code> instead of <code>%lf</code> for doubles:</strong> In <code>printf()</code>, a <code>float</code> is automatically promoted to a <code>double</code>, so <code>%f</code> works for both. However, <code>scanf()</code> uses pointers and needs to know the exact memory size to write to. If you use <code>%f</code> for a <code>double</code> variable, it only writes 4 bytes instead of 8, resulting in garbage values. <em>Always use <code>%lf</code> for <code>double</code> in <code>scanf()</code>.</em>
-            </li>
-            <li class="def" style="margin-bottom: 0.75rem;">
-                <strong>Forgetting the <code>&</code> (Address-of) operator:</strong> Writing <code>scanf("%d", num);</code> instead of <code>&num</code>. This usually causes a segmentation fault (program crash) because it tries to write input data to whatever random memory address happens to be stored inside <code>num</code>.
-            </li>
-            <li class="def" style="margin-bottom: 0.75rem;">
-                <strong>Adding a newline in the format string:</strong> Writing <code>scanf("%d\n", &num);</code> makes the compiler expect whitespace followed by a non-whitespace character. Your program will appear to freeze or get stuck waiting for more input after you press Enter.
-            </li>
-            <li class="def" style="margin-bottom: 0;">
-                <strong>Using <code>&</code> with Strings (Arrays):</strong> Unlike standard variables, when reading a string using <code>%s</code>, you do not use the <code>&</code> operator (e.g., <code>scanf("%s", name);</code> is correct). This is because an array name in C automatically acts as a pointer to its first element.
-            </li>
-        </ul>
+        <span class="term">Control Flow Syntax</span>
+        
+        <p class="def" style="margin-top: 0.5rem;"><strong>1. if / else if / else</strong></p>
+        <pre style="margin: 0.5rem 0;"><code>if (condition) {
+    // Executes if condition is true
+} else if (another_condition) {
+    // Executes if the above is false and this is true
+} else {
+    // Executes if all conditions are false
+}</code></pre>
+
+        <p class="def" style="margin-top: 1rem;"><strong>2. switch (with break)</strong></p>
+        <pre style="margin: 0.5rem 0;"><code>switch (variable) {
+    case 1:
+        // Executes if variable equals 1
+        break; // Exits the switch block to prevent fall-through
+    case 2:
+        // Executes if variable equals 2
+        break;
+    default:
+        // Executes if no cases match
+}</code></pre>
+
+        <p class="def" style="margin-top: 1rem;"><strong>3. for loop (with continue)</strong></p>
+        <pre style="margin: 0.5rem 0;"><code>for (int i = 0; i < 10; i++) {
+    if (i == 5) {
+        continue; // Skips the rest of the code for i=5 and jumps to i=6
+    }
+    // Code to repeat
+}</code></pre>
+
+        <p class="def" style="margin-top: 1rem;"><strong>4. while loop</strong></p>
+        <pre style="margin: 0.5rem 0;"><code>while (condition) {
+    // Code repeats as long as condition evaluates to true
+    // (Ensure you update the condition variable inside to avoid infinite loops)
+}</code></pre>
+
+        <p class="def" style="margin-top: 1rem;"><strong>5. do...while loop</strong></p>
+        <pre style="margin: 0.5rem 0;"><code>do {
+    // Code executes AT LEAST ONCE, then repeats if condition is true
+} while (condition); // The semicolon here is mandatory!</code></pre>
     </div>
-
-
     
     
     
