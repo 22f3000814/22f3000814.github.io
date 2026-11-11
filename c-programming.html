@@ -184,6 +184,74 @@
     </nav>
 
 
+<div class="note-card table-wrapper" style="margin-top: 1rem;">
+        <table class="styled-table">
+            <thead>
+                <tr>
+                    <th style="width: 25%; text-align: center;">Format Specifier</th>
+                    <th style="width: 25%;">Data Type</th>
+                    <th style="width: 50%;">Description / Use Case</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="term" style="text-align: center; margin-bottom: 0;"><code>%d</code> or <code>%i</code></td>
+                    <td class="def"><code>int</code></td>
+                    <td class="def">Signed decimal integer.</td>
+                </tr>
+                <tr>
+                    <td class="term" style="text-align: center; margin-bottom: 0;"><code>%c</code></td>
+                    <td class="def"><code>char</code></td>
+                    <td class="def">Single character.</td>
+                </tr>
+                <tr>
+                    <td class="term" style="text-align: center; margin-bottom: 0;"><code>%f</code></td>
+                    <td class="def"><code>float</code></td>
+                    <td class="def">Floating-point number (decimal).</td>
+                </tr>
+                <tr>
+                    <td class="term" style="text-align: center; margin-bottom: 0;"><code>%lf</code></td>
+                    <td class="def"><code>double</code></td>
+                    <td class="def">Double-precision floating-point number.</td>
+                </tr>
+                <tr>
+                    <td class="term" style="text-align: center; margin-bottom: 0;"><code>%s</code></td>
+                    <td class="def"><code>char[]</code> or <code>char*</code></td>
+                    <td class="def">String of characters.</td>
+                </tr>
+                <tr>
+                    <td class="term" style="text-align: center; margin-bottom: 0;"><code>%u</code></td>
+                    <td class="def"><code>unsigned int</code></td>
+                    <td class="def">Unsigned decimal integer (positive numbers only).</td>
+                </tr>
+                <tr>
+                    <td class="term" style="text-align: center; margin-bottom: 0;"><code>%ld</code></td>
+                    <td class="def"><code>long int</code></td>
+                    <td class="def">Long signed integer.</td>
+                </tr>
+                <tr>
+                    <td class="term" style="text-align: center; margin-bottom: 0;"><code>%x</code> or <code>%X</code></td>
+                    <td class="def"><code>unsigned int</code></td>
+                    <td class="def">Unsigned hexadecimal integer (<code>%x</code> for lowercase, <code>%X</code> for uppercase).</td>
+                </tr>
+                <tr>
+                    <td class="term" style="text-align: center; margin-bottom: 0;"><code>%o</code></td>
+                    <td class="def"><code>unsigned int</code></td>
+                    <td class="def">Unsigned octal integer.</td>
+                </tr>
+                <tr>
+                    <td class="term" style="text-align: center; margin-bottom: 0;"><code>%p</code></td>
+                    <td class="def">Pointer</td>
+                    <td class="def">Memory address (prints in hexadecimal format).</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+    
+    
+
  <!-- JavaScript to handle the theme switching -->
     <script>
         const themeSelector = document.getElementById('theme-selector');
