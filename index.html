@@ -331,21 +331,6 @@
         <span class="term">Algorithm</span>
         <p class="def">A finite number of precise and concise unambiguous instructions, to solve a given problem, which can be executed in a finite time on a computer to obtain the envisaged solution.</p>
     </div>
-
-    <!-- JavaScript to handle the theme switching -->
-    <script>
-        const themeSelector = document.getElementById('theme-selector');
-        
-        themeSelector.addEventListener('change', function() {
-            if (this.value === 'default') {
-                document.documentElement.removeAttribute('data-theme');
-            } else {
-                document.documentElement.setAttribute('data-theme', this.value);
-            }
-        });
-    </script>
-
-
     <div class="note-card" style="margin-top: 1rem;">
         <span class="term">Flowchart</span>
         <p class="def">It is a graphical illustration of the steps under the algorithm used to understand and check the algorithm.</p>
@@ -391,9 +376,55 @@
                 </tr>
             </tbody>
         </table>
+
+        
+    </div>
+<div class="note-card" style="margin-top: 1rem;">
+        <span class="term">Pseudocode</span>
+        <p class="def">A dummy computer language for "tentative discussion"[cite: 4].</p>
+        <pre><code>Program &lt;FIND_TOPMARKS(Input, Output)&gt;
+Variables Name, Rollno, Marks, Maxname, Maxrollno, Maxmarks;
+Begin
+       Readdata(Name, Rollno, Marks);
+       Set {
+       Maxmarks &lt;- Marks;
+       Maxrollno &lt;- Rollno;
+       Maxname &lt;- Name; }
+While not_EOF(Input) do
+       begin
+              Readdata(Name, Rollno, Marks);
+              if (Marks &gt; Maxmarks) then
+                     Set {
+                            Maxmarks &lt;- Marks;
+                            Maxrollno &lt;- Rollno;
+                            Maxname &lt;- Name; }
+       end;
+Printdata(Maxname, Maxrollno, Maxmarks);
+End;</code></pre>
     </div>
 
 
+
+
     
+
+
+
+    
+    <!-- JavaScript to handle the theme switching -->
+    <script>
+        const themeSelector = document.getElementById('theme-selector');
+        
+        themeSelector.addEventListener('change', function() {
+            if (this.value === 'default') {
+                document.documentElement.removeAttribute('data-theme');
+            } else {
+                document.documentElement.setAttribute('data-theme', this.value);
+            }
+        });
+    </script>
+
+
+
 </body>
 </html>
