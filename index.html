@@ -87,6 +87,40 @@
             color: inherit;
             padding: 0;
         }
+        /* Table Styling */
+        .table-wrapper {
+            padding: 0; /* Removes padding so the table touches the edges */
+            overflow: hidden; /* Keeps the rounded corners intact */
+        }
+
+        .styled-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+            margin: 0;
+        }
+        
+        .styled-table th {
+            background-color: #183B32; /* Primary Forest Green */
+            color: #F5F1E8; /* Cream */
+            text-align: left;
+            padding: 1rem;
+            font-weight: 600;
+        }
+
+        .styled-table td {
+            padding: 1rem;
+            border-bottom: 1px solid #DDE8DD; /* Secondary */
+            color: #183B32;
+        }
+
+        .styled-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .styled-table tr:nth-child(even) {
+            background-color: rgba(221, 232, 221, 0.25); /* Very soft Secondary green tint */
+        }
     </style>
 </head>
 <body>
@@ -142,6 +176,39 @@
             <code>Disk Drive (HDD)</code>
         </p>
     </div>
-
+<h2>Programming Language Levels</h2>
+    
+    <div class="note-card table-wrapper">
+        <table class="styled-table">
+            <thead>
+                <tr>
+                    <th>Language Level</th>
+                    <th>Execution Speed</th>
+                    <th>Hardware Dependency</th>
+                    <th>Examples</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="term" style="margin-bottom: 0;">High-Level Language</td>
+                    <td class="def">Slower (Requires translation)</td>
+                    <td class="def">Independent (Portable)</td>
+                    <td><code>Python</code>, <code>Java</code>, <code>C++</code></td>
+                </tr>
+                <tr>
+                    <td class="term" style="margin-bottom: 0;">Assembly Language</td>
+                    <td class="def">Fast (Requires assembler)</td>
+                    <td class="def">Dependent (CPU Specific)</td>
+                    <td><code>x86 ASM</code>, <code>ARM</code></td>
+                </tr>
+                <tr>
+                    <td class="term" style="margin-bottom: 0;">Machine Language</td>
+                    <td class="def">Fastest (Directly executed)</td>
+                    <td class="def">Highly Dependent</td>
+                    <td><code>Binary (0s and 1s)</code></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </body>
 </html>
