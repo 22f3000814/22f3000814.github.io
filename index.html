@@ -139,7 +139,8 @@
         /* Table Styling */
         .table-wrapper {
             padding: 0; 
-            overflow: hidden; 
+            overflow-x: auto; /* Allows horizontal swiping on mobile */
+            border-radius: 6px; /* Keeps corners smooth */
         }
 
         .styled-table {
@@ -496,7 +497,12 @@ End;</code></pre>
         </table>
     </div>
 
-
+<div class="note-card" style="text-align: center; padding: 1.5rem;">
+        <img src="image1.png" alt="Von Neumann Architecture Diagram" style="max-width: 100%; height: auto; border-radius: 6px;">
+        <p class="def" style="margin-top: 1rem; font-size: 0.85rem; text-align: center;">
+            Block diagram illustrating the shared bus communication between the CPU (ALU & Control Unit), Memory, and Input/Output devices.
+        </p>
+    </div>
     
 
 
