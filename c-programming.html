@@ -291,8 +291,21 @@
 } while (condition); // The semicolon here is mandatory!</code></pre>
     </div>
     
-
-    <!-- hello -->
+<div class="note-card">
+        <span class="term">Pre-increment (++x) vs Post-increment (x++)</span>
+        <ul style="margin-top: 0.5rem; padding-left: 1.5rem;">
+            <li class="def" style="margin-bottom: 0.75rem;">
+                <strong>Pre-increment (<code>++x</code>):</strong> "Change, then use." The variable is increased by 1 <em>before</em> it is evaluated in the current expression.
+            </li>
+            <li class="def" style="margin-bottom: 0.5rem;">
+                <strong>Post-increment (<code>x++</code>):</strong> "Use, then change." The current value of the variable is evaluated in the expression first, and it is increased by 1 <em>afterward</em>.
+            </li>
+        </ul>
+        <p class="def" style="margin-top: 0.5rem;"><strong>Example:</strong></p>
+        <pre style="margin: 0.5rem 0;"><code>int a = 5, b = 5;
+int y = ++a; /* Pre-increment: 'a' becomes 6, then 'y' is assigned 6 */
+int z = b++; /* Post-increment: 'z' is assigned 5, then 'b' becomes 6 */</code></pre>
+    </div>
 
  <!-- JavaScript to handle the theme switching -->
     <script>
