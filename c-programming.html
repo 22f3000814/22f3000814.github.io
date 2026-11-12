@@ -390,21 +390,9 @@ int z = b++; /* Post-increment: 'z' is assigned 5, then 'b' becomes 6 */</code><
         </div>
 
         <pre style="margin: 0.5rem 0;"><code>#include &lt;stdio.h&gt;
-
-int main() {
-    int a = 10;
-    int b = 20;
-    int max;
-
-    /* Instead of writing this:
-       if (a > b) { max = a; } else { max = b; } */
-
-    /* You can write this: */
+{
     max = (a > b) ? a : b;
 
-    printf("The maximum value is %d\n", max);
-
-    return 0;
 }</code></pre>
     </div>
 
