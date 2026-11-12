@@ -395,6 +395,59 @@ int z = b++; /* Post-increment: 'z' is assigned 5, then 'b' becomes 6 */</code><
 
 }</code></pre>
     </div>
+<div class="note-card">
+        <span class="term">Random Numbers & String Conversion</span>
+        <ul style="margin-top: 0.5rem; padding-left: 1.5rem;">
+            <li class="def" style="margin-bottom: 0.5rem;"><strong><code>atof()</code>:</strong> Converts a string (ASCII) to a floating-point number (<code>double</code>). Requires <code>&lt;stdlib.h&gt;</code>.</li>
+            <li class="def" style="margin-bottom: 0.5rem;"><strong><code>rand()</code>:</strong> Generates a pseudo-random integer between 0 and <code>RAND_MAX</code>. Requires <code>&lt;stdlib.h&gt;</code>.</li>
+            <li class="def" style="margin-bottom: 0.5rem;"><strong><code>srand()</code>:</strong> Seeds the random number generator. If you don't seed it, <code>rand()</code> produces the exact same sequence of numbers every time you run the program.</li>
+            <li class="def" style="margin-bottom: 0;"><strong><code>time(NULL)</code>:</strong> Returns the current system time in seconds. Passing this into <code>srand()</code> guarantees a unique starting point for randomness every single time the code runs. Requires <code>&lt;time.h&gt;</code>.</li>
+        </ul>
+        
+        <p class="def" style="margin-top: 1rem;"><strong>Code Example:</strong></p>
+        <pre style="margin: 0.5rem 0;"><code>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt; /* Required for atof, rand, srand */
+#include &lt;time.h&gt;   /* Required for time */
+
+int main() {
+    /* 1. Using atof() to convert text to a double */
+    char text[] = "98.6";
+    double temp = atof(text);
+    printf("Converted string to double: %.2lf\n", temp);
+
+    /* 2. Seeding the random number generator with current time */
+    srand(time(NULL));
+
+    /* 3. Using rand() to get a random number between 0 and 99 */
+    int random_num = rand() % 100;
+    printf("Random number (0-99): %d\n", random_num);
+
+    return 0;
+}</code></pre>
+    </div>
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     
  <!-- JavaScript to handle the theme switching -->
