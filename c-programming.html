@@ -380,14 +380,33 @@ int z = b++; /* Post-increment: 'z' is assigned 5, then 'b' becomes 6 */</code><
             <li class="def"><strong>A</strong>ssignment <code>= += -= *= /=</code> &nbsp;<em>(Right to Left)</em></li>
             <li class="def"><strong>C</strong>omma <code>,</code></li>
         </ol>
-
-        <div style="background-color: var(--secondary-color); padding: 0.75rem; border-radius: 4px; margin-top: 1rem;">
-            <strong class="term" style="margin-bottom: 0.25rem;">Memory Trick (Mnemonic):</strong>
-            <p class="def" style="font-weight: 600;">P. U. A. S. R. E. B. L. T. A. C.</p>
-            <p class="def" style="font-size: 0.85rem; margin-top: 0.25rem;"><em>"<strong>P</strong>lease <strong>U</strong>se <strong>A</strong>rithmetic <strong>S</strong>hifts, <strong>R</strong>elational <strong>E</strong>quality, <strong>B</strong>itwise <strong>L</strong>ogic, <strong>T</strong>hen <strong>A</strong>ssign <strong>C</strong>ommas."</em></p>
-        </div>
     </div>
+<div class="note-card">
+        <span class="term">Ternary Operator (?:) Code Example</span>
+        <p class="def" style="margin-top: 0.5rem;">The ternary operator acts as a shorthand for a simple <code>if-else</code> statement.</p>
+        
+        <div style="background-color: var(--secondary-color); padding: 0.75rem; border-radius: 4px; text-align: center; margin: 0.75rem 0;">
+            <strong class="term" style="margin: 0; font-size: 1.1rem;">Syntax: <code>condition ? value_if_true : value_if_false;</code></strong>
+        </div>
 
+        <pre style="margin: 0.5rem 0;"><code>#include &lt;stdio.h&gt;
+
+int main() {
+    int a = 10;
+    int b = 20;
+    int max;
+
+    /* Instead of writing this:
+       if (a > b) { max = a; } else { max = b; } */
+
+    /* You can write this: */
+    max = (a > b) ? a : b;
+
+    printf("The maximum value is %d\n", max);
+
+    return 0;
+}</code></pre>
+    </div>
 
     
  <!-- JavaScript to handle the theme switching -->
