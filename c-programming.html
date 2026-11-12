@@ -482,7 +482,71 @@ int main() {
 [123456789]</code></pre>
     </div>
 
+<div class="note-card">
+        <span class="term">Bubble Sort Algorithm</span>
+        <p class="def" style="margin-top: 0.5rem;">Bubble sort works by repeatedly stepping through the list, comparing adjacent elements, and swapping them if they are in the wrong order. The process is repeated until the array is sorted.</p>
+        
+        <p class="def" style="margin-top: 1rem;"><strong>Code Implementation:</strong></p>
+        <pre style="margin: 0.5rem 0;"><code>/* Note: SIZE must be defined globally or via a macro, e.g., #define SIZE 10 */
 
+void bubbleSort(int a[]) {
+    int pass, j, hold;
+    
+    /* Outer loop controls the number of passes */
+    for(pass = 1; pass <= SIZE - 1; pass++) {
+        
+        /* Inner loop performs the comparisons and swaps */
+        for(j = 0; j <= SIZE - 2; j++) {
+            
+            /* If the current element is greater than the next, swap them */
+            if(a[j] > a[j + 1]) {
+                hold = a[j];
+                a[j] = a[j + 1];
+                a[j + 1] = hold;
+            }
+        }
+    }
+}</code></pre>
+    </div>
+
+<div class="note-card">
+        <span class="term">Binary Search Algorithm</span>
+        <p class="def" style="margin-top: 0.5rem;">Binary search is a highly efficient algorithm for finding an item from a <strong>sorted</strong> array. It works by repeatedly dividing the search interval in half until the target value is found or the interval is empty.</p>
+        
+        <p class="def" style="margin-top: 1rem;"><strong>Code Implementation:</strong></p>
+        <pre style="margin: 0.5rem 0;"><code>/* Note: The array MUST be sorted before using Binary Search */
+
+int binarySearch(int arr[], int size, int target) {
+    int left = 0;
+    int right = size - 1;
+
+    while (left <= right) {
+        /* Calculates mid this way to prevent integer overflow */
+        int mid = left + (right - left) / 2; 
+
+        /* Check if target is present at mid */
+        if (arr[mid] == target) {
+            return mid; /* Element found, return its index */
+        }
+        
+        /* If target is greater, ignore the left half */
+        if (arr[mid] < target) {
+            left = mid + 1;
+        }
+        /* If target is smaller, ignore the right half */
+        else {
+            right = mid - 1;
+        }
+    }
+    
+    /* Target was not found in the array */
+    return -1; 
+}</code></pre>
+    </div>
+
+
+    
+    
     
     
 
