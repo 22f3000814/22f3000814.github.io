@@ -346,10 +346,10 @@ int z = b++; /* Post-increment: 'z' is assigned 5, then 'b' becomes 6 */</code><
 
 <div class="note-card" style="margin-top: 1rem;">
         <span class="term">Bitwise NOT (~) and Two's Complement</span>
-        <p class="def" style="margin-top: 0.5rem;">In modern systems, C uses two's complement representation for signed integers[cite: 2]. Because of this architecture, applying the bitwise NOT operator (<code>~</code>)—which flips all 0s to 1s and 1s to 0s in binary—results in a direct mathematical shortcut[cite: 2].</p>
+        <p class="def" style="margin-top: 0.5rem;">In modern systems, C uses two's complement representation for signed integers. Because of this architecture, applying the bitwise NOT operator (<code>~</code>)—which flips all 0s to 1s and 1s to 0s in binary—results in a direct mathematical shortcut.</p>
         
         <div style="background-color: var(--secondary-color); padding: 0.75rem; border-radius: 4px; text-align: center; margin: 0.75rem 0;">
-            <strong class="term" style="margin: 0; font-size: 1.1rem;">Formula: <code>~x = -(x + 1)</code></strong>[cite: 2]
+            <strong class="term" style="margin: 0; font-size: 1.1rem;">Formula: <code>~x = -(x + 1)</code></strong>
         </div>
 
         <p class="def" style="margin-top: 0.5rem;"><strong>Examples:</strong></p>
@@ -363,7 +363,33 @@ int z = b++; /* Post-increment: 'z' is assigned 5, then 'b' becomes 6 */</code><
         </ul>
     </div>
     
+<div class="note-card">
+        <span class="term">Operator Precedence & Associativity</span>
+        <p class="def" style="margin-top: 0.5rem;">Most C operators evaluate <strong>Left to Right</strong>. The only three groups that evaluate <strong>Right to Left</strong> are Unary, Ternary, and Assignment.</p>
+        
+        <ol style="margin-top: 0.75rem; padding-left: 1.5rem; font-size: 0.9rem; line-height: 1.6;">
+            <li class="def"><strong>P</strong>rimary <code>() [] -> .</code></li>
+            <li class="def"><strong>U</strong>nary <code>++ -- ! ~ sizeof (type) * &</code> &nbsp;<em>(Right to Left)</em></li>
+            <li class="def"><strong>A</strong>rithmetic <code>* / %</code> then <code>+ -</code></li>
+            <li class="def"><strong>S</strong>hift <code>&lt;&lt; &gt;&gt;</code></li>
+            <li class="def"><strong>R</strong>elational <code>&lt; &lt;= &gt; &gt;=</code></li>
+            <li class="def"><strong>E</strong>quality <code>== !=</code></li>
+            <li class="def"><strong>B</strong>itwise <code>&amp;</code> then <code>^</code> then <code>|</code></li>
+            <li class="def"><strong>L</strong>ogical <code>&amp;&amp;</code> then <code>||</code></li>
+            <li class="def"><strong>T</strong>ernary <code>?:</code> &nbsp;<em>(Right to Left)</em></li>
+            <li class="def"><strong>A</strong>ssignment <code>= += -= *= /=</code> &nbsp;<em>(Right to Left)</em></li>
+            <li class="def"><strong>C</strong>omma <code>,</code></li>
+        </ol>
 
+        <div style="background-color: var(--secondary-color); padding: 0.75rem; border-radius: 4px; margin-top: 1rem;">
+            <strong class="term" style="margin-bottom: 0.25rem;">Memory Trick (Mnemonic):</strong>
+            <p class="def" style="font-weight: 600;">P. U. A. S. R. E. B. L. T. A. C.</p>
+            <p class="def" style="font-size: 0.85rem; margin-top: 0.25rem;"><em>"<strong>P</strong>lease <strong>U</strong>se <strong>A</strong>rithmetic <strong>S</strong>hifts, <strong>R</strong>elational <strong>E</strong>quality, <strong>B</strong>itwise <strong>L</strong>ogic, <strong>T</strong>hen <strong>A</strong>ssign <strong>C</strong>ommas."</em></p>
+        </div>
+    </div>
+
+
+    
  <!-- JavaScript to handle the theme switching -->
     <script>
         const themeSelector = document.getElementById('theme-selector');
