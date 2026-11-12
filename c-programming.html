@@ -426,6 +426,66 @@ int main() {
 }</code></pre>
     </div>
 
+    <div class="note-card">
+        <span class="term">Strings and the Null Terminator (\0)</span>
+        <p class="def" style="margin-top: 0.5rem;">In C, strings are character arrays that are read until a null terminator (<code>\0</code>) is found. Standard functions like <code>printf()</code> will stop printing the moment they encounter the first <code>\0</code>, even if there is more text after it.</p>
+        
+        <pre style="margin: 0.5rem 0;"><code>#include &lt;stdio.h&gt;
+
+int main() {
+    /* The array holds: 'H','e','l','l','o','\0','W','o','r','l','d','\0' */
+    char x[] = "Hello\0World";
+    
+    printf("%s\n", x);
+
+    return 0;
+}</code></pre>
+
+        <p class="def" style="margin-top: 1rem;"><strong>Output:</strong></p>
+        <pre style="margin: 0.5rem 0;"><code>Hello</code></pre>
+
+        <ul style="margin-top: 0.75rem; padding-left: 1.5rem;">
+            <li class="def" style="margin-bottom: 0;">
+                <strong>Explanation:</strong> While the array <code>x</code> successfully stores the entire sequence (taking up 12 bytes in memory), the <code>%s</code> format specifier stops reading exactly after "Hello" because it detects the explicit null character you placed in the middle.
+            </li>
+        </ul>
+    </div>
+
+
+<div class="note-card">
+        <span class="term">Format Specifier Width (%8d and %-8d)</span>
+        <ul style="margin-top: 0.5rem; padding-left: 1.5rem;">
+            <li class="def" style="margin-bottom: 0.5rem;"><strong>Minimum Width, Not Maximum:</strong> <code>%8d</code> tells <code>printf()</code> to reserve a minimum field width of 8 characters. It does <em>not</em> restrict the number to 8 digits.</li>
+            <li class="def" style="margin-bottom: 0.5rem;"><strong>Overflow Handling:</strong> If the integer is longer than the specified width, <code>printf()</code> simply expands the field and prints the entire value. For example, printing <code>123456789</code> with <code>%8d</code> outputs all 9 digits without truncating anything.</li>
+            <li class="def" style="margin-bottom: 0;"><strong>Alignment:</strong> By default, numbers are right-aligned (padded with empty spaces on the left). Adding a minus sign like <code>%-8d</code> forces the number to be left-aligned (padded with spaces on the right).</li>
+        </ul>
+        
+        <p class="def" style="margin-top: 1rem;"><strong>Code Example:</strong></p>
+        <pre style="margin: 0.5rem 0;"><code>#include &lt;stdio.h&gt;
+
+int main() {
+    /* Right-aligned, padded with 6 spaces */
+    printf("[%8d]\n", 12);       
+    
+    /* Left-aligned, padded with 6 spaces on the right */
+    printf("[%-8d]\n", 12);      
+    
+    /* Value exceeds 8 chars; prints the whole number */
+    printf("[%8d]\n", 123456789); 
+
+    return 0;
+}</code></pre>
+        
+        <p class="def" style="margin-top: 1rem;"><strong>Output:</strong></p>
+        <pre style="margin: 0.5rem 0;"><code>[      12]
+[12      ]
+[123456789]</code></pre>
+    </div>
+
+
+    
+    
+
 
 
 
