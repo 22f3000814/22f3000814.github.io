@@ -545,6 +545,76 @@ int binarySearch(int arr[], int size, int target) {
     </div>
 
 
+    <div class="note-card">
+        <span class="term">Macros and Preprocessor Directives (#define)</span>
+        <p class="def" style="margin-top: 0.5rem;">A macro is a fragment of code given a name. Before actual compilation begins, the <strong>C preprocessor</strong> performs a direct text substitution, replacing every occurrence of the macro name with its defined value.</p>
+        
+        <ul style="margin-top: 0.5rem; padding-left: 1.5rem;">
+            <li class="def" style="margin-bottom: 0.5rem;">
+                <strong>Object-like Macros:</strong> Used to define constants. They do not take arguments. No memory is allocated for them because the compiler just sees the hardcoded replaced text.
+            </li>
+            <li class="def" style="margin-bottom: 0.5rem;">
+                <strong>Function-like Macros:</strong> Take arguments and work like small inline functions, but they execute faster because there is no overhead of a real function call.
+            </li>
+            <li class="def" style="margin-bottom: 0;">
+                <strong>The Parentheses Rule:</strong> Always wrap macro arguments and the entire macro expression in parentheses to prevent operator precedence bugs during text expansion.
+            </li>
+        </ul>
+
+        <p class="def" style="margin-top: 1rem;"><strong>Code Example:</strong></p>
+        <pre style="margin: 0.5rem 0;"><code>#include &lt;stdio.h&gt;
+
+/* Object-like macros */
+#define PI 3.14159
+#define SIZE 10
+
+/* Function-like macro (Notice the heavy use of parentheses) */
+#define SQUARE(x) ((x) * (x))
+
+int main() {
+    /* Expands to: 3.14159 * ((5) * (5)) */
+    double area = PI * SQUARE(5); 
+    printf("Area: %lf\n", area);
+
+    /* WHY PARENTHESES MATTER:
+       If SQUARE(x) was defined simply as x * x
+       SQUARE(2 + 3) would expand to: 2 + 3 * 2 + 3 = 11 (Incorrect!)
+       
+       With ((x) * (x)), it becomes: ((2 + 3) * (2 + 3)) = 25 (Correct!) */
+       
+    return 0;
+}</code></pre>
+    </div>
+
+<div class="note-card">
+        <span class="term">Iterating and Printing a 2D Array</span>
+        <p class="def" style="margin-top: 0.5rem;">This function iterates through a two-dimensional array using nested loops. Notice that when passing a 2D array to a function, the number of columns (like <code>EXAMS</code>) must be specified in the parameter list.</p>
+        
+        <pre style="margin: 0.5rem 0;"><code>/* Note: EXAMS must be defined globally, e.g., #define EXAMS 4 */
+
+void printArray(const int grades[][EXAMS], int pupils, int tests) {
+    int i, j;
+    
+    /* Print column headers */
+    printf(" [0] [1] [2] [3]");
+    
+    /* Outer loop walks through the rows (pupils) */
+    for(i = 0; i <= pupils - 1; i++) {
+        printf("\nstudentGrades[%d] ", i);
+        
+        /* Inner loop walks through the columns (tests) */
+        for(j = 0; j <= tests - 1; j++) {
+            /* Prints each grade left-aligned with a width of 5 characters */
+            printf("%-5d", grades[i][j]);
+        }
+    }
+}</code></pre>
+    </div>
+
+
+
+    
+
     
     
     
