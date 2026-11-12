@@ -307,6 +307,63 @@ int y = ++a; /* Pre-increment: 'a' becomes 6, then 'y' is assigned 6 */
 int z = b++; /* Post-increment: 'z' is assigned 5, then 'b' becomes 6 */</code></pre>
     </div>
 
+    <div class="note-card">
+        <span class="term">Type Conversion (Implicit vs Explicit)</span>
+        <ul style="margin-top: 0.5rem; padding-left: 1.5rem;">
+            <li class="def" style="margin-bottom: 0.5rem;"><strong>Implicit Conversion (Coercion):</strong> Done automatically by the compiler. A smaller data type is safely promoted to a larger one (e.g., an <code>int</code> mixed with a <code>double</code> becomes a <code>double</code>).</li>
+            <li class="def" style="margin-bottom: 0.75rem;"><strong>Explicit Conversion (Type Casting):</strong> Forced manually by the programmer using a cast operator, like <code>(float)</code> or <code>(int)</code>, placed directly in front of the variable or value.</li>
+        </ul>
+        
+        <p class="def" style="margin-top: 0.5rem;"><strong>Division Behavior:</strong></p>
+        <ul style="margin-top: 0.5rem; padding-left: 1.5rem;">
+            <li class="def" style="margin-bottom: 0.5rem;"><strong><code>int / int</code>:</strong> Performs <em>integer division</em>. It completely truncates (drops) any decimal part. <br><em>Example:</em> <code>5 / 2</code> evaluates to <code>2</code>.</li>
+            <li class="def" style="margin-bottom: 0.75rem;"><strong><code>double / int</code>:</strong> The <code>int</code> is implicitly promoted to a <code>double</code> before calculation, preserving the decimal. <br><em>Example:</em> <code>5.0 / 2</code> evaluates to <code>2.5</code>.</li>
+        </ul>
+
+        <p class="def" style="margin-top: 0.5rem;"><strong>Common Pitfalls & Errors:</strong></p>
+        <ul style="margin-top: 0.5rem; padding-left: 1.5rem;">
+            <li class="def" style="margin-bottom: 0.5rem;"><strong>Unintended Integer Division:</strong> Writing <code>float ans = 5 / 2;</code> gives <code>2.000000</code> because the integer division evaluates to <code>2</code> <em>before</em> it is assigned to the float. Fix it by casting at least one side: <code>float ans = (float)5 / 2;</code>.</li>
+            <li class="def" style="margin-bottom: 0;"><strong>Data Loss (Demotion):</strong> Assigning a floating-point number to an integer variable drops the fractional part entirely without rounding. Writing <code>int x = 3.99;</code> stores exactly <code>3</code> in memory, permanently losing the <code>.99</code>.</li>
+        </ul>
+    </div>
+
+    <div class="note-card" style="margin-top: 1rem;">
+        <span class="term">Bitwise Shift Operators (&lt;&lt; and &gt;&gt;)</span>
+        <p class="def" style="margin-top: 0.5rem;">These operators manipulate the raw binary bits of an integer directly in memory.</p>
+        <ul style="margin-top: 0.5rem; padding-left: 1.5rem;">
+            <li class="def" style="margin-bottom: 0.75rem;">
+                <strong>Left Shift (<code>&lt;&lt;</code>):</strong> Shifts all bits to the left by a specified number of positions, adding zeros on the right. <br>
+                <em>Mathematical Effect:</em> Multiplies the number by 2 for every single shift.<br>
+                <em>Example:</em> <code>3 &lt;&lt; 1</code> (Binary <code>0011</code> shifts left to become <code>0110</code>, which equals <code>6</code> in decimal).
+            </li>
+            <li class="def" style="margin-bottom: 0;">
+                <strong>Right Shift (<code>&gt;&gt;</code>):</strong> Shifts all bits to the right, discarding the rightmost bits that fall off the edge. <br>
+                <em>Mathematical Effect:</em> Divides the number by 2 (acting as integer division) for every single shift.<br>
+                <em>Example:</em> <code>8 &gt;&gt; 2</code> (Binary <code>1000</code> shifts right twice to become <code>0010</code>, which equals <code>2</code> in decimal).
+            </li>
+        </ul>
+    </div>
+
+<div class="note-card" style="margin-top: 1rem;">
+        <span class="term">Bitwise NOT (~) and Two's Complement</span>
+        <p class="def" style="margin-top: 0.5rem;">In modern systems, C uses two's complement representation for signed integers[cite: 2]. Because of this architecture, applying the bitwise NOT operator (<code>~</code>)—which flips all 0s to 1s and 1s to 0s in binary—results in a direct mathematical shortcut[cite: 2].</p>
+        
+        <div style="background-color: var(--secondary-color); padding: 0.75rem; border-radius: 4px; text-align: center; margin: 0.75rem 0;">
+            <strong class="term" style="margin: 0; font-size: 1.1rem;">Formula: <code>~x = -(x + 1)</code></strong>[cite: 2]
+        </div>
+
+        <p class="def" style="margin-top: 0.5rem;"><strong>Examples:</strong></p>
+        <ul style="margin-top: 0.5rem; padding-left: 1.5rem;">
+            <li class="def" style="margin-bottom: 0.5rem;">
+                <strong>Positive Integer:</strong> If <code>x = 5</code>, applying <code>~5</code> evaluates to <code>-(5 + 1)</code>. The result is <strong><code>-6</code></strong>.
+            </li>
+            <li class="def" style="margin-bottom: 0;">
+                <strong>Negative Integer:</strong> If <code>x = -10</code>, applying <code>~(-10)</code> evaluates to <code>-(-10 + 1)</code>, which is <code>-(-9)</code>. The result is <strong><code>9</code></strong>.
+            </li>
+        </ul>
+    </div>
+    
+
  <!-- JavaScript to handle the theme switching -->
     <script>
         const themeSelector = document.getElementById('theme-selector');
