@@ -613,6 +613,209 @@ void printArray(const int grades[][EXAMS], int pupils, int tests) {
 
 
 
+    <div class="note-card">
+        <span class="term">Pass-by-Reference (Using Pointers)</span>
+        <p class="def" style="margin-top: 0.5rem;">To modify a variable directly in memory, you must pass its address to the function using the address-of operator, formatted as <code>cubeByReference( &number );</code>[cite: 7].</p>
+        <p class="def" style="margin-top: 0.5rem;">The function receives this address via a pointer parameter (<code>int *nPtr</code>) and uses the dereference operator (<code>*</code>) to modify the original variable, calculating the result as <code>*nPtr = *nPtr * *nPtr * *nPtr;</code>[cite: 6].</p>
+        
+        <p class="def" style="margin-top: 1rem;"><strong>Combined Code Example:</strong></p>
+        <pre style="margin: 0.5rem 0;"><code>#include &lt;stdio.h&gt;
+
+/* Function expects a memory address (pointer) */
+void cubeByReference( int *nPtr )
+{ 
+    *nPtr = *nPtr * *nPtr * *nPtr;  /* cube number in main */[cite: 6]
+}
+
+int main() {
+    int number = 5;
+    
+    /* Pass the address of 'number' */
+    cubeByReference( &number );[cite: 7]
+    
+    printf("The cubed value is %d\n", number); /* Prints 125 */
+    return 0;
+}</code></pre>
+    </div>
+
+<div class="note-card">
+        <span class="term">Pointers and the const Qualifier</span>
+        <ul style="margin-top: 0.5rem; padding-left: 1.5rem;">
+            <li class="def" style="margin-bottom: 0.75rem;">
+                <strong>Constant Pointer to an int:</strong> <code>int *const myPtr = &x;</code>[cite: 8]<br>
+                Type is <code>int *const</code>, meaning it is a constant pointer to an <code>int</code>[cite: 8]. The pointer will always point to the same memory address, but the value at that address can be modified.
+            </li>
+            <li class="def" style="margin-bottom: 0.75rem;">
+                <strong>Pointer to a Constant int:</strong> <code>const int *myPtr = &x;</code>[cite: 8]<br>
+                This is a regular pointer to a <code>const int</code>[cite: 8]. The pointer can be reassigned to point to a different address, but you cannot use the pointer to modify the value it points to.
+            </li>
+            <li class="def" style="margin-bottom: 0;">
+                <strong>Constant Pointer to a Constant int:</strong> <code>const int *const Ptr = &x;</code>[cite: 8]<br>
+                This is a <code>const</code> pointer to a <code>const int</code>[cite: 8]. The pointer cannot change addresses, and it cannot modify the value. However, the original variable <code>x</code> can still be changed directly, just not through <code>*Ptr</code>[cite: 8].
+            </li>
+        </ul>
+        
+        <p class="def" style="margin-top: 1rem;"><strong>Code Example:</strong></p>
+        <pre style="margin: 0.5rem 0;"><code>#include &lt;stdio.h&gt;
+
+int main() {
+    int x = 10;
+    int y = 20;
+
+    /* 1. Constant pointer to an int */
+    int *const ptr1 = &x;[cite: 8]
+    *ptr1 = 15; /* VALID: Can change the value */
+    /* ptr1 = &y;  ERROR: Cannot change the address */
+
+    /* 2. Regular pointer to a const int */
+    const int *ptr2 = &x;[cite: 8]
+    ptr2 = &y;  /* VALID: Can change the address */
+    /* *ptr2 = 15; ERROR: Cannot change the value */
+
+    /* 3. Const pointer to a const int */
+    const int *const Ptr = &x;[cite: 8]
+    /* Ptr = &y;   ERROR: Cannot change address */
+    /* *Ptr = 15;  ERROR: Cannot change value via pointer */
+    
+    x = 30; /* VALID: x can be changed directly, but not via *Ptr */[cite: 8]
+
+    return 0;
+}</code></pre>
+    </div>
+
+
+    <div class="note-card">
+        <span class="term">Pointer Arithmetic & Operations</span>
+        <ul style="margin-top: 0.5rem; padding-left: 1.5rem;">
+            <li class="def" style="margin-bottom: 0.5rem;"><strong>Dereferencing (<code>*</code>):</strong> Retrieves the actual value stored at the pointer's memory address.</li>
+            <li class="def" style="margin-bottom: 0.5rem;"><strong>Pointer Arithmetic:</strong> Adding an integer <code>n</code> to a pointer shifts it forward by <code>n</code> elements (based on the data type's size), not just <code>n</code> bytes.</li>
+            <li class="def" style="margin-bottom: 0.5rem;"><strong>Pointer Subtraction:</strong> Subtracting two pointers returns the total number of elements between them. We use the <code>%td</code> format specifier for this result (which is of type <code>ptrdiff_t</code>).</li>
+            <li class="def" style="margin-bottom: 0;"><strong>NULL Pointers:</strong> Assigning a pointer to <code>NULL</code> ensures it safely points to nothing, avoiding random garbage memory locations.</li>
+        </ul>
+        
+        <p class="def" style="margin-top: 1rem;"><strong>Code Example:</strong></p>
+        <pre style="margin: 0.5rem 0;"><code>#include &lt;stdio.h&gt;
+
+int main() {
+    int v[] = {10, 20, 30, 40, 50};
+
+    int *vPtr = &v[0];
+    int *vPtr2 = &v[2];
+
+    /* Dereferencing */
+    printf("%d\n", *vPtr);       // Prints 10
+    printf("%d\n", *vPtr2);      // Prints 30
+
+    /* Pointer arithmetic */
+    printf("%d\n", *(vPtr + 1)); // Prints 20
+    printf("%d\n", *(vPtr + 2)); // Prints 30
+
+    /* Pointer subtraction */
+    printf("%td\n", vPtr2 - vPtr); // Prints 2
+
+    /* Pointer comparison (1 is True, 0 is False) */
+    printf("%d\n", vPtr < vPtr2);  // Prints 1
+    printf("%d\n", vPtr == vPtr2); // Prints 0
+    printf("%d\n", vPtr > vPtr2);  // Prints 0
+
+    /* NULL pointer */
+    int *p = NULL;
+    printf("%d\n", p == NULL);     // Prints 1
+    
+    return 0;
+}</code></pre>
+    </div>
+
+<div class="note-card">
+        <span class="term">Pointer Assignment & Void Pointers</span>
+        <ul style="margin-top: 0.5rem; padding-left: 1.5rem;">
+            <li class="def" style="margin-bottom: 0.5rem;"><strong>Same Pointer Types:</strong> You can assign one pointer to another directly if they share the exact same data type.</li>
+            <li class="def" style="margin-bottom: 0.5rem;"><strong>Different Pointer Types:</strong> Assigning a pointer of one type to another (like <code>int*</code> to <code>float*</code>) requires an explicit cast. Dereferencing this casted pointer usually causes undefined behaviour because different types read memory differently.</li>
+            <li class="def" style="margin-bottom: 0;"><strong>Void Pointers (<code>void *</code>):</strong> A generic, untyped pointer that can store the memory address of <em>any</em> variable. Because it has no type, the compiler doesn't know how many bytes to read, so you <strong>cannot</strong> dereference it directly. You must explicitly cast it back to a specific pointer type first.</li>
+        </ul>
+        
+        <p class="def" style="margin-top: 1rem;"><strong>Code Example:</strong></p>
+        <pre style="margin: 0.5rem 0;"><code>#include &lt;stdio.h&gt;
+
+int main() {
+    int a = 10;
+    float b = 5.5;
+
+    int *p = &a;
+    int *q;
+
+    /* 1. Same pointer types */
+    q = p;                          // Valid direct assignment
+    printf("%d\n", *q);             // Prints 10
+
+    /* 2. Different pointer types */
+    float *r;
+    r = (float*)p;                  // Explicit cast required
+    /* Dereferencing 'r' here would be undefined behaviour */
+
+    /* 3. Void pointer (generic pointer) */
+    void *ptr;
+
+    ptr = &a;                       // Valid: int* safely goes into void*
+    /* Must explicitly cast ptr to (int*) before dereferencing */
+    printf("%d\n", *(int*)ptr);     // Prints 10
+
+    ptr = &b;                       // Valid: float* safely goes into void*
+    /* Must explicitly cast ptr to (float*) before dereferencing */
+    printf("%.1f\n", *(float*)ptr); // Prints 5.5
+
+    /* Direct dereferencing is invalid and will throw a compile error */
+    /* printf("%d", *ptr); */       
+
+    return 0;
+}</code></pre>
+    </div>
+
+
+
+    #include<stdbool.h>
+
+// Functions to determine sorting order
+bool ascending(int a,int b){
+    return a>b;       // Swap if a>b
+}
+
+bool descending(int a,int b){
+    return a<b;       // Swap if a<b
+}
+
+// Function pointer as parameter
+void bubbleSort(int a[],int n,bool (*compare)(int,int)){
+    int i,j,temp;
+
+    for(i=0;i<n-1;i++){
+        for(j=0;j<n-i-1;j++){
+            if(compare(a[j],a[j+1])){
+                temp=a[j];
+                a[j]=a[j+1];
+                a[j+1]=temp;
+            }
+        }
+    }
+}
+
+int a[]={5,2,8,1,4};
+
+bubbleSort(a,5,ascending);
+// Result: 1 2 4 5 8
+
+bubbleSort(a,5,descending);
+// Result: 8 5 4 2 1
+
+
+
+
+bool (*compare)(int,int); vs bool *compare(int,int);
+with function prototpe for both
+
+    
+
+    
     
 
     
