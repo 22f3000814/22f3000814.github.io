@@ -771,54 +771,57 @@ int main() {
 }</code></pre>
     </div>
 
+<div class="note-card">
+        <span class="term">Function Pointers vs. Functions Returning Pointers</span>
+        <ul style="margin-top: 0.5rem; padding-left: 1.5rem;">
+            <li class="def" style="margin-bottom: 0.5rem;">
+                <strong><code>bool (*compare)(int, int);</code></strong> — A <strong>function pointer</strong> that holds the address of a function taking two <code>int</code>s and returning a <code>bool</code>.
+            </li>
+            <li class="def" style="margin-bottom: 0;">
+                <strong><code>bool *compare(int, int);</code></strong> — A <strong>function prototype</strong> for a function that takes two <code>int</code>s and returns a pointer to a <code>bool</code>.
+            </li>
+        </ul>
 
+        <p class="def" style="margin-top: 1rem;"><strong>Code Example (Callback in Bubble Sort):</strong></p>
+        <pre style="margin: 0.5rem 0;"><code>#include &lt;stdio.h&gt;
+#include &lt;stdbool.h&gt;
 
-    #include<stdbool.h>
-
-// Functions to determine sorting order
-bool ascending(int a,int b){
-    return a>b;       // Swap if a>b
+/* Functions to determine sorting order */
+bool ascending(int a, int b) {
+    return a &gt; b;       // Swap if a &gt; b
 }
 
-bool descending(int a,int b){
-    return a<b;       // Swap if a<b
+bool descending(int a, int b) {
+    return a &lt; b;       // Swap if a &lt; b
 }
 
-// Function pointer as parameter
-void bubbleSort(int a[],int n,bool (*compare)(int,int)){
-    int i,j,temp;
+/* Function pointer as parameter */
+void bubbleSort(int a[], int n, bool (*compare)(int, int)) {
+    int i, j, temp;
 
-    for(i=0;i<n-1;i++){
-        for(j=0;j<n-i-1;j++){
-            if(compare(a[j],a[j+1])){
-                temp=a[j];
-                a[j]=a[j+1];
-                a[j+1]=temp;
-            }
-        }
-    }
+    for (i = 0; i &lt; n - 1; i++) {
+        for (j = 0; j &lt; n - i - 1; j++) {
+            if (compare(a[j], a[j + 1])) {
+                temp = a[j];
+                a[j] = a[j + 1];
+                a[j + 1] = temp;
+            }
+        }
+    }
 }
 
-int a[]={5,2,8,1,4};
+int main() {
+    int a[] = {5, 2, 8, 1, 4};
 
-bubbleSort(a,5,ascending);
-// Result: 1 2 4 5 8
+    bubbleSort(a, 5, ascending);
+    // Result: 1 2 4 5 8
 
-bubbleSort(a,5,descending);
-// Result: 8 5 4 2 1
+    bubbleSort(a, 5, descending);
+    // Result: 8 5 4 2 1
 
-
-
-
-bool (*compare)(int,int); vs bool *compare(int,int);
-with function prototpe for both
-
-    
-
-    
-    
-
-    
+    return 0;
+}</code></pre>
+    </div>
     
     
     
