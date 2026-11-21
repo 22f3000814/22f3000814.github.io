@@ -615,8 +615,8 @@ void printArray(const int grades[][EXAMS], int pupils, int tests) {
 
     <div class="note-card">
         <span class="term">Pass-by-Reference (Using Pointers)</span>
-        <p class="def" style="margin-top: 0.5rem;">To modify a variable directly in memory, you must pass its address to the function using the address-of operator, formatted as <code>cubeByReference( &number );</code>[cite: 7].</p>
-        <p class="def" style="margin-top: 0.5rem;">The function receives this address via a pointer parameter (<code>int *nPtr</code>) and uses the dereference operator (<code>*</code>) to modify the original variable, calculating the result as <code>*nPtr = *nPtr * *nPtr * *nPtr;</code>[cite: 6].</p>
+        <p class="def" style="margin-top: 0.5rem;">To modify a variable directly in memory, you must pass its address to the function using the address-of operator, formatted as <code>cubeByReference( &number );</code>.</p>
+        <p class="def" style="margin-top: 0.5rem;">The function receives this address via a pointer parameter (<code>int *nPtr</code>) and uses the dereference operator (<code>*</code>) to modify the original variable, calculating the result as <code>*nPtr = *nPtr * *nPtr * *nPtr;</code>.</p>
         
         <p class="def" style="margin-top: 1rem;"><strong>Combined Code Example:</strong></p>
         <pre style="margin: 0.5rem 0;"><code>#include &lt;stdio.h&gt;
@@ -624,14 +624,14 @@ void printArray(const int grades[][EXAMS], int pupils, int tests) {
 /* Function expects a memory address (pointer) */
 void cubeByReference( int *nPtr )
 { 
-    *nPtr = *nPtr * *nPtr * *nPtr;  /* cube number in main */[cite: 6]
+    *nPtr = *nPtr * *nPtr * *nPtr;  /* cube number in main */
 }
 
 int main() {
     int number = 5;
     
     /* Pass the address of 'number' */
-    cubeByReference( &number );[cite: 7]
+    cubeByReference( &number );
     
     printf("The cubed value is %d\n", number); /* Prints 125 */
     return 0;
@@ -642,16 +642,16 @@ int main() {
         <span class="term">Pointers and the const Qualifier</span>
         <ul style="margin-top: 0.5rem; padding-left: 1.5rem;">
             <li class="def" style="margin-bottom: 0.75rem;">
-                <strong>Constant Pointer to an int:</strong> <code>int *const myPtr = &x;</code>[cite: 8]<br>
-                Type is <code>int *const</code>, meaning it is a constant pointer to an <code>int</code>[cite: 8]. The pointer will always point to the same memory address, but the value at that address can be modified.
+                <strong>Constant Pointer to an int:</strong> <code>int *const myPtr = &x;</code><br>
+                Type is <code>int *const</code>, meaning it is a constant pointer to an <code>int</code>. The pointer will always point to the same memory address, but the value at that address can be modified.
             </li>
             <li class="def" style="margin-bottom: 0.75rem;">
-                <strong>Pointer to a Constant int:</strong> <code>const int *myPtr = &x;</code>[cite: 8]<br>
-                This is a regular pointer to a <code>const int</code>[cite: 8]. The pointer can be reassigned to point to a different address, but you cannot use the pointer to modify the value it points to.
+                <strong>Pointer to a Constant int:</strong> <code>const int *myPtr = &x;</code><br>
+                This is a regular pointer to a <code>const int</code>. The pointer can be reassigned to point to a different address, but you cannot use the pointer to modify the value it points to.
             </li>
             <li class="def" style="margin-bottom: 0;">
-                <strong>Constant Pointer to a Constant int:</strong> <code>const int *const Ptr = &x;</code>[cite: 8]<br>
-                This is a <code>const</code> pointer to a <code>const int</code>[cite: 8]. The pointer cannot change addresses, and it cannot modify the value. However, the original variable <code>x</code> can still be changed directly, just not through <code>*Ptr</code>[cite: 8].
+                <strong>Constant Pointer to a Constant int:</strong> <code>const int *const Ptr = &x;</code><br>
+                This is a <code>const</code> pointer to a <code>const int</code>. The pointer cannot change addresses, and it cannot modify the value. However, the original variable <code>x</code> can still be changed directly, just not through <code>*Ptr</code>.
             </li>
         </ul>
         
@@ -663,21 +663,21 @@ int main() {
     int y = 20;
 
     /* 1. Constant pointer to an int */
-    int *const ptr1 = &x;[cite: 8]
+    int *const ptr1 = &x;
     *ptr1 = 15; /* VALID: Can change the value */
     /* ptr1 = &y;  ERROR: Cannot change the address */
 
     /* 2. Regular pointer to a const int */
-    const int *ptr2 = &x;[cite: 8]
+    const int *ptr2 = &x;
     ptr2 = &y;  /* VALID: Can change the address */
     /* *ptr2 = 15; ERROR: Cannot change the value */
 
     /* 3. Const pointer to a const int */
-    const int *const Ptr = &x;[cite: 8]
+    const int *const Ptr = &x;
     /* Ptr = &y;   ERROR: Cannot change address */
     /* *Ptr = 15;  ERROR: Cannot change value via pointer */
     
-    x = 30; /* VALID: x can be changed directly, but not via *Ptr */[cite: 8]
+    x = 30; /* VALID: x can be changed directly, but not via *Ptr */
 
     return 0;
 }</code></pre>
