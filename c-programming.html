@@ -823,7 +823,34 @@ int main() {
 }</code></pre>
     </div>
     
-    
+    <div class="note-card">
+        <span class="term">Array of Strings (2D Array vs. Array of Pointers)</span>
+        <p class="def" style="margin-top: 0.5rem;">In C, an array of strings can be declared in two main ways:</p>
+        <ul style="margin-top: 0.5rem; padding-left: 1.5rem;">
+            <li class="def" style="margin-bottom: 0.5rem;">
+                <strong>2D Character Array (<code>char arr[rows][cols]</code>):</strong> Allocates a fixed-size block of memory for every string. You can modify individual characters, but shorter strings waste unused space.
+            </li>
+            <li class="def" style="margin-bottom: 0;">
+                <strong>Array of Character Pointers (<code>const char *arr[]</code>):</strong> Stores memory addresses pointing to string literals. It saves memory since each string takes only the space it needs, but the string literals themselves are read-only.
+            </li>
+        </ul>
+
+        <p class="def" style="margin-top: 1rem;"><strong>Code Example:</strong></p>
+        <pre style="margin: 0.5rem 0;"><code>#include &lt;stdio.h&gt;
+
+int main() {
+    /* 1. 2D Character Array (Fixed width of 10 chars each, mutable) */
+    char names[3][10] = {"Alice", "Bob", "Charlie"};
+
+    /* 2. Array of Character Pointers (Memory-efficient, read-only) */
+    const char *fruits[3] = {"Apple", "Banana", "Cherry"};
+
+    printf("2D Array: %s, %s\n", names[0], names[2]);
+    printf("Pointer Array: %s, %s\n", fruits[0], fruits[1]);
+
+    return 0;
+}</code></pre>
+    </div>
     
 
 
