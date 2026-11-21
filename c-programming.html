@@ -852,7 +852,31 @@ int main() {
 }</code></pre>
     </div>
     
+<div class="note-card">
+        <span class="term">Using <code>(void*)</code> with <code>%p</code> to Print Addresses</span>
+        <ul style="margin-top: 0.5rem; padding-left: 1.5rem;">
+            <li class="def" style="margin-bottom: 0.5rem;">
+                <strong>Why cast to <code>(void*)</code>?</strong> The <code>%p</code> format specifier strictly expects a generic pointer of type <code>void*</code>. Passing any other pointer type (like <code>int*</code>) directly to <code>printf()</code> is technically <em>undefined behavior</em> in C and triggers compiler warnings.
+            </li>
+            <li class="def" style="margin-bottom: 0;">
+                <strong><code>arr</code> vs. <code>&amp;arr[0]</code> vs. <code>&amp;arr</code>:</strong> All three print the exact same starting memory address, but their <strong>types</strong> differ. <code>arr</code> and <code>&amp;arr[0]</code> are of type <code>int*</code> (pointer to the first element), while <code>&amp;arr</code> is of type <code>int (*)[3]</code> (pointer to the entire array).
+            </li>
+        </ul>
 
+        <p class="def" style="margin-top: 1rem;"><strong>Code Example:</strong></p>
+        <pre style="margin: 0.5rem 0;"><code>#include &lt;stdio.h&gt;
+
+int main() {
+    int arr[3] = {10, 20, 30};
+
+    /* Cast to (void*) to safely match %p */
+    printf("%p\n", (void*)arr);      // Address of arr[0] (type: int*)
+    printf("%p\n", (void*)&amp;arr[0]);  // Address of arr[0] (type: int*)
+    printf("%p\n", (void*)&amp;arr);     // Address of the entire array (type: int (*)[3])
+
+    return 0;
+}</code></pre>
+    </div>
 
 
 
