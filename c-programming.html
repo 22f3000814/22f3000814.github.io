@@ -873,7 +873,10 @@ int main() {
     printf("%p\n", (void*)arr);      // Address of arr[0] (type: int*)
     printf("%p\n", (void*)&amp;arr[0]);  // Address of arr[0] (type: int*)
     printf("%p\n", (void*)&amp;arr);     // Address of the entire array (type: int (*)[3])
-
+/* Array of strings example */
+    const char *a[] = {"Apple", "Banana"};
+    printf("%p\n", (void*)a[0]);      // Address of the string "Apple"
+    printf("%p\n", (void*)&amp;a[0]); // Address of the pointer a[0] itself
     return 0;
 }</code></pre>
     </div>
